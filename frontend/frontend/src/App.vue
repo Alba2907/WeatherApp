@@ -11,27 +11,7 @@
                 <div class="city-inner">
                   <input type="text" class="search">
                 </div>
-                <div class="summary">
-                  <div
-                      style="background-image: url('../assets/img/weather-main/thunderstorm.png');"
-                      class="pic-main"
-                  ></div>
-                  <div class="weather">
-                    <div class="temp">
-                      14 °C
-                    </div>
-                    <div class="weather-desc text-block">
-                      Thunderstorm
-                    </div>
-                  </div>
-                  <div class="city text-block">
-                    Paris,
-                    FR
-                  </div>
-                  <div class="date text-block">
-                    Thu, March 16, 2023
-                  </div>
-                </div>
+            <weather-summary />
               </div>
             </section>
             <section class="section section-right">
@@ -244,7 +224,10 @@
 </template>
 
 <script setup>
-// import HelloWorld from './components/HelloWorld.vue'
+ import WeatherSummary from './components/WeatherSummary.vue'
+
+
+
 </script>
 
 <style lang="sass" scoped>
@@ -269,6 +252,7 @@
 .sections
   display: flex
   width: 100%
+
 
   @media (max-width: 767px)
     flex-direction: column
@@ -331,5 +315,332 @@
 
   @media (max-width: 767px)
     width: 100%
+
+
+    //---highlight--//
+
+.pic-main
+  width: 60px
+  height: 60px
+  margin: 20px 0 12px
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  background-size: contain
+
+.city
+  font-size: 24px
+
+.weather
+  margin: 0 0 20px
+  padding: 20px 0
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4)
+
+.temp
+  padding-bottom: 8px
+  font-size: 32px
+
+.text-block
+  position: relative
+  padding-left: 24px
+  padding-bottom: 8px
+  font-size: 14px
+
+.text-block::before
+  content: ''
+  position: absolute
+  top: 0
+  left: 0
+  width: 20px
+  height: 20px
+  margin-right: 6px
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  background-size: contain
+
+.weather-desc::before
+  background-image: url("./assets/img/weather.svg")
+
+.city::before
+  background-image: url("./assets/img/location.svg")
+
+.date::before
+  left: 2px
+  width: 15px
+  height: 15px
+  background-image: url("./assets/img/calendar.svg")
+
+.highlights
+  padding: 28px 16px 16px
+  background: url("./assets/img/gradient-4.jpg") no-repeat 0% 0%
+  background-size: cover
+  border-radius: 25px
+
+.highlights-wrapper
+  display: flex
+  justify-content: space-between
+
+
+
+  @media (max-width: 575px)
+    .highlights-wrapper
+      flex-direction: column
+
+
+.title
+  padding-bottom: 16px
+
+.highlight
+  width: 32%
+
+  @media (max-width: 575px)
+    .highlight
+      width: 100%
+
+
+.card
+  min-height: 230px
+  padding: 16px
+  background: url("./assets/img/gradient-2.jpg") no-repeat 50% 50%
+  background-size: cover
+  border-radius: 8px
+
+@media (max-width: 1199px)
+.card
+  padding: 12px
+
+
+.card-centered
+  display: flex
+  justify-content: center
+  margin-top: 40px
+
+.card-justify
+  display: flex
+  justify-content: space-between
+  margin-top: 40px
+
+.card-title
+  padding-bottom: 12px
+  font-size: 13px
+
+@media (max-width: 1199px)
+.card-title
+  font-size: 12px
+
+
+.card-pic
+  width: 100%
+  height: 90px
+  margin-bottom: 16px
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  background-size: contain
+
+.card-pic--wind
+  background-image: url('./assets/img/equalizer (2).png')
+
+.card-pic--pressure
+  background-image: url('./assets/img/barometer.png')
+
+.card-pic--sun
+  background-image: url('./assets/img/sun-moving.png')
+
+.states
+  display: flex
+  justify-content: space-between
+
+.states--margin
+  margin-top: 40px
+
+.state
+  width: 40%
+
+.state:last-child
+  text-align: right
+
+.state-pic
+  width: 20px
+  height: 20px
+  margin-bottom: 6px
+  background: url("./assets/img/sun.svg") no-repeat 50% 50%
+  background-size: cover
+
+.state-pic--flipped
+  margin-left: auto
+  -webkit-transform: scaleX(-1)
+  transform: scaleX(-1)
+
+.state-title
+  font-size: 12px
+  color: $gold
+
+.state-time
+  font-size: 13px
+  font-weight: 700
+
+@media (max-width: 1199px)
+.state-time
+  font-size: 11px
+
+
+.info-main
+  display: flex
+  align-items: flex-end
+
+.info-main:last-child
+  text-align: right
+
+.info-main-num
+  font-size: 20px
+
+@media (max-width: 1199px)
+.info-main-num
+  font-size: 18px
+
+
+.info-main-text
+  padding-left: 2px
+  padding-bottom: 3px
+  font-size: 13px
+  color: rgba(255, 255, 255, 0.75)
+
+@media (max-width: 1199px)
+.info-main-text
+  padding-bottom: 1.5px
+  font-size: 12px
+
+
+.card-small
+  margin-top: 12px
+  padding: 12px 16px
+  background: url("./assets/img/gradient-2.jpg") no-repeat 50% 50%
+  background-size: cover
+  border-radius: 8px
+
+.card-small-title
+  font-size: 13px
+
+.card-small-info
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+@media (max-width: 1199px)
+.card-small-info
+  flex-direction: column
+  align-items: flex-start
+
+
+.card-small-pic
+  width: 20px
+  height: 20px
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  background-size: contain
+
+@media (max-width: 1199px)
+.card-small-pic
+  display: none
+
+
+.card-small-pic--margin
+  width: 16px
+  height: 16px
+  margin-bottom: 3px
+
+.card-small-pic--wind
+  background-image: url('./assets/img/gusts.svg')
+
+.card-small-pic--pressure
+  background-image: url('./assets/img/humidity.svg')
+
+.card-small-pic--sun
+  background-image: url('./assets/img/cloud.svg')
+
+.card-small-data
+  display: flex
+  align-items: flex-end
+  width: 45%
+
+@media (max-width: 1199px)
+.card-small-data
+  width: 100%
+  padding-top: 8px
+
+
+.card-small-hint
+  width: 55%
+
+@media (max-width: 1199px)
+.card-small-hint
+  width: 100%
+
+
+.card-small-text
+  font-size: 11px
+  line-height: 1.2
+  color: rgba(255, 255, 255, 0.6)
+
+@media (max-width: 1199px)
+.card-small-text
+  min-height: 22px
+  font-size: 9px
+
+
+.pic-coords
+  background-image: url("./assets/img/compass.png")
+
+.pic-humidity
+  background-image: url("./assets/img/humidity.png")
+
+.block-bottom
+  height: 100%
+  margin-left: 10px
+  padding: 28px 16px 16px
+  background: url('./assets/img/gradient-1.jpg') no-repeat 0% 0%
+  background-size: cover
+  border-radius: 25px
+
+  &-inner
+    display: flex
+    align-items: center
+
+    @media (max-width: 575px)
+      flex-direction: column
+
+  &-pic
+    width: 15%
+    height: 70px
+    background-size: contain
+    background-repeat: no-repeat
+    border-radius: 16px
+
+    @media (max-width: 575px)
+      width: 30%
+      margin-right: 0
+
+  &-texts
+    width: 85%
+    padding-left: 20px
+
+    @media (max-width: 575px)
+      width: 100%
+      padding-top: 16px
+      padding-left: 0
+
+  &-text-block
+
+    &:first-child
+      padding-bottom: 12px
+
+    &-title
+      padding-bottom: 4px
+      font-size: 15px
+      font-weight: 700
+
+    &-desc
+      font-size: 13px
+      color: rgba($white, 0.75)
+
 
 </style>
