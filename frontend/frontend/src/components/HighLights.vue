@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <section class="section section-right">
+
     <div class="section highlights">
       <div class="title">
         Today's Highlights
@@ -154,7 +154,7 @@
         </div>
       </div>
     </div>
-  </section>
+
 </template>
 
 <style scoped lang="sass">

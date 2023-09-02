@@ -14,7 +14,9 @@
             <weather-summary />
               </div>
             </section>
+            <section class="section section-right">
             <high-lights />
+            </section>
           </div>
           <div class="sections">
             <section class="section-bottom">
@@ -102,7 +104,6 @@
 .sections
   display: flex
   width: 100%
-
 
   @media (max-width: 767px)
     flex-direction: column

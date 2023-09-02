@@ -3,7 +3,7 @@
 <template>
   <div class="summary">
     <div
-        style="background-image: url('../assets/img/weather-main/thunderstorm.png')"
+        style="background-image: url('/src/assets/img/weather-main/thunderstorm.png')"
         class="pic-main"
     ></div>
     <div class="weather">
@@ -40,6 +40,7 @@
   background-repeat: no-repeat
   background-position: 50% 50%
   background-size: contain
+
 
 .city
   font-size: 24px
