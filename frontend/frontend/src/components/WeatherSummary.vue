@@ -1,33 +1,75 @@
+<script setup>
+import {firstUpperCase, kInC} from "../utils/index.js";
+import {ref} from "vue";
+
+const props = defineProps({
+  weatherInfo: {
+    type: [Object, null],
+    required: true
+  },
+  city: {
+    type: [String, null],
+    required: true
+  }
+})
+
+
+
+const days = [
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat'
+];
+const newDate = new Date(); //  получаем дату
+const year = newDate.getFullYear()
+const day = newDate.getDay(); // получаем номер дня недели
+const month = newDate.toLocaleString('en-US', { month: 'long' }) // default\en-US\ru-Rlong\short
+const date = newDate.getDate() // получаем число
+
+// var options = {
+//   weekday: "long",
+//   year: "numeric",
+//   month: "long",
+//   day: "numeric",
+// };
+
+const options = { weekday: 'short' };
+const dayOfWeek = newDate.toLocaleString('en-US', options);
+console.log(dayOfWeek)
+
+
+
+</script>
 
 
 <template>
-  <div class="summary">
+  <div v-if="weatherInfo?.weather" class="summary">
     <div
-        style="background-image: url('/src/assets/img/weather-main/thunderstorm.png')"
+        :style="`background-image: url('/src/assets/img/weather-main/${weatherInfo?.weather[0].description}.png')`"
         class="pic-main"
     ></div>
     <div class="weather">
       <div class="temp">
-        14 °C
+        {{ kInC(weatherInfo?.main?.temp) }} °C
       </div>
       <div class="weather-desc text-block">
-        Thunderstorm
+        {{ firstUpperCase(weatherInfo?.weather[0].description)  }}
       </div>
     </div>
     <div class="city text-block">
-      Paris,
-      FR
+      {{ weatherInfo?.name }},
+      {{ weatherInfo?.sys?.country }}
     </div>
     <div class="date text-block">
-      Thu, March 16, 2023
+      {{ `${dayOfWeek}, ${month} ${date}, ${year}`}}
     </div>
   </div>
 </template>
 
-<script setup>
-
-
-</script>
 
 <style scoped lang="sass">
 

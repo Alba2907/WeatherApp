@@ -1,4 +1,23 @@
+<script setup>
+import WeatherSummary from './components/WeatherSummary.vue'
+import HighLights from "./components/HighLights.vue";
+import {API_KEY, BASE_URL} from "./API/index.js";
+import {ref, onMounted} from "vue";
 
+const city = ref('Krasnodar')
+const weatherInfo = ref(null)
+
+const getWeather = () => {
+  // &units=metric можно вставить чтобы перевести метрику в цельсии
+  fetch(`${BASE_URL}?q=${city.value}&appid=${API_KEY}`)
+      .then((response) => response.json())
+      .then((data) => weatherInfo.value = data)
+}
+
+
+
+onMounted(getWeather)
+</script>
 
 <template>
   <div class="page">
@@ -9,13 +28,20 @@
             <section class="section section-left">
               <div class="info">
                 <div class="city-inner">
-                  <input type="text" class="search">
+                  <input
+                      v-model="city"
+                      @keyup.enter="getWeather"
+                      type="text"
+                      class="search">
                 </div>
-            <weather-summary />
+            <weather-summary
+            :weatherInfo="weatherInfo"
+            :city="city"
+            />
               </div>
             </section>
             <section class="section section-right">
-            <high-lights />
+            <high-lights/>
             </section>
           </div>
           <div class="sections">
@@ -74,13 +100,7 @@
   </div>
 </template>
 
-<script setup>
- import WeatherSummary from './components/WeatherSummary.vue'
- import HighLights from "./components/HighLights.vue";
 
-
-
-</script>
 
 <style lang="sass" scoped>
 
