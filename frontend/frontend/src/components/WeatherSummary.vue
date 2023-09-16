@@ -13,17 +13,6 @@ const props = defineProps({
   }
 })
 
-
-
-const days = [
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thu',
-  'Fri',
-  'Sat'
-];
 const newDate = new Date(); //  получаем дату
 const year = newDate.getFullYear()
 const day = newDate.getDay(); // получаем номер дня недели
