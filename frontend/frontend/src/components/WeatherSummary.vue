@@ -1,6 +1,6 @@
 <script setup>
 import {firstUpperCase, kInC} from "../utils/index.js";
-import {ref} from "vue";
+
 
 const props = defineProps({
   weatherInfo: {
@@ -14,6 +14,10 @@ const props = defineProps({
 })
 
 const newDate = new Date(); //  получаем дату
+const sec = 1694833153 * 1000
+const time = newDate.getHours()
+console.log(time)
+
 const year = newDate.getFullYear()
 const day = newDate.getDay(); // получаем номер дня недели
 const month = newDate.toLocaleString('en-US', { month: 'long' }) // default\en-US\ru-Rlong\short
@@ -36,7 +40,7 @@ console.log(dayOfWeek)
 
 
 <template>
-  <div v-if="weatherInfo?.weather" class="summary">
+  <div class="summary">
     <div
         :style="`background-image: url('/src/assets/img/weather-main/${weatherInfo?.weather[0].description}.png')`"
         class="pic-main"

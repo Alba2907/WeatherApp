@@ -10,7 +10,7 @@ const props = defineProps({
 
 
 <template>
-  <section class="section-bottom">
+  <section  class="section-bottom">
     <div
         class="block-bottom"
     >
@@ -19,7 +19,7 @@ const props = defineProps({
         <div class="block-bottom-texts">
           <div class="block-bottom-text-block">
             <div class="block-bottom-text-block-title">
-              Humidity: {{weatherInfo?.main.humidity}}
+              Humidity: {{weatherInfo?.main?.humidity}}
             </div>
             <div class="block-bottom-text-block-desc">
               Humidity is the concentration of water vapor present in the air. Water vapor, the gaseous state of water, is generally invisible to the human eye.

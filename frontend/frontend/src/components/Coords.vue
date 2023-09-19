@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <section v-if="weatherInfo?.weather" class="section-bottom">
+  <section  class="section-bottom">
     <div
         class="block-bottom"
     >

@@ -5,9 +5,12 @@ import {API_KEY, BASE_URL} from "./API/index.js";
 import {ref, onMounted} from "vue";
 import Coords from "./components/Coords.vue";
 import Humidity from "./components/Humidity.vue";
+import Error from "./components/Error.vue";
 
 const city = ref('Krasnodar')
 const weatherInfo = ref(null)
+
+
 
 const getWeather = () => {
   // &units=metric можно вставить чтобы перевести метрику в цельсии
@@ -34,21 +37,32 @@ onMounted(getWeather)
                       v-model="city"
                       @keyup.enter="getWeather"
                       type="text"
-                      class="search">
+                      :class="[weatherInfo?.weather ? 'search' : 'search error']"
+                  >
                 </div>
             <weather-summary
+            v-if="weatherInfo?.weather"
             :weatherInfo="weatherInfo"
             :city="city"
             />
+                <error
+                v-else
+                />
               </div>
             </section>
             <section class="section section-right">
-            <high-lights/>
+            <high-lights
+            :weatherInfo="weatherInfo"
+            />
             </section>
           </div>
           <div class="sections">
-            <coords :weatherInfo="weatherInfo"></coords>
-            <humidity :weather-info="weatherInfo"></humidity>
+            <coords
+                :weatherInfo="weatherInfo"
+            />
+            <humidity
+                :weather-info="weatherInfo"
+            />
           </div>
         </div>
       </div>
@@ -135,6 +149,11 @@ onMounted(getWeather)
   border: none
   outline: none
   cursor: pointer
+
+.search.error
+  color: red
+  text-decoration: underline
+
 
 .section-bottom
   width: 50%
